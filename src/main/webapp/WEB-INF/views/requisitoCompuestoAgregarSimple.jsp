@@ -24,12 +24,13 @@
                    <table class="table table-striped">   
                        <h4>Requisito Compuesto</h4>
                     <tr>
-                    <th>id</th>
-                        <th>nombre</th>
-                        <th>necesidad</th>
-                        <th>prioriodad</th>
-                        <th>riesgo</th>
+                    <th>Id</th>
+                        <th>Nombre</th>
+                        <th>Necesidad</th>
+                        <th>Prioriodad</th>
+                        <th>Riesgo</th>
                         <th>Estado</th>  
+                         <th>Proyecto</th>  
                     </tr>
                     <tr>
                         <td>${requisitoCompuesto.id}</td>   
@@ -38,6 +39,7 @@
                         <td>${requisitoCompuesto.prioridad}</td> 
                          <td>${requisitoCompuesto.riesgo}</td>
                          <td>${requisitoCompuesto.estado.descripcionEstado}</td>
+                            <td>${requisitoCompuesto.proyecto.id}</td>
                         
                         
                    </tr>

@@ -28,11 +28,11 @@
                         <form:input 	id="apellido"	path="apellido" type="text" class="form:input-large"/>
                     </div>
                     <div class="form-group" >
-                        <label class="control-label col-md-2" for="rol">rol</label>
+                        <label class="control-label col-md-2" for="rol">Rol</label>
                         <form:input 	id="rol"	path="rol" type="text" class="form:input-large"/>
                     </div>
                     <div class="form-group" >
-                        <label class="control-label col-md-2" for="dni">dni</label>
+                        <label class="control-label col-md-2" for="dni">Dni</label>
                         <form:input 	id="dni"	path="dni" type="text" class="form:input-large"/>
                     </div>
                         <div class="form-group">

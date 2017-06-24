@@ -25,8 +25,8 @@
                    <table class="table table-striped">   
                        <h4>Aplicacion</h4>
                     <tr>
-                        <th>id</th>
-                        <th>nombre</th>
+                        <th>ID</th>
+                        <th>Nombre</th>
                         <th>Descripcion</th>
                     </tr>
                     <tr>
@@ -45,8 +45,8 @@
                 <table class="table table-striped">    
                     <h4>Proyectos</h4>
                 <tr>
-                <th>id</th>
-                <th>nombre</th>
+                <th>ID</th>
+                <th>Nombre</th>
                 <th>Descripcion</th>
                 </tr>
                     <c:forEach  items="${gestion.proyectos}" var="proyecto">

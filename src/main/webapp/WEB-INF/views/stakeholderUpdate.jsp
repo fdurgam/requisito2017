@@ -17,14 +17,14 @@
         <script src="${pageContext.request.contextPath}/resources/js/bootstrap.js" type="text/javascript"></script>
         <script src="${pageContext.request.contextPath}/resources/js/app.js" type="text/javascript"></script>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Alumno-Datos</title>
+        <title>Actualizacion Stakeholder</title>
     </head>
     <body>
         <div class="container"> 
             <%@include file="menu.jsp" %> 
             <div class="row">
                 <form:form  modelAttribute="updatestakeholder"  class="form-horizontal">
-                    <h2 align="center"> Modificar Datos Alumno </h2>
+                    <h2 align="center"> Modificar Datos Stakeholder </h2>
                     <div class="form-group" >
                         <label class="control-label col-md-2" for="nombre">Nombre</label>
                         <form:input 	id="nombre"	path="nombre" type="text" class="form:input-large"/>
@@ -34,11 +34,11 @@
                         <form:input 	id="apellido"	path="apellido" type="text" class="form:input-large"/>
                     </div>
                     <div class="form-group" >
-                        <label class="control-label col-md-2" for="rol">rol</label>
+                        <label class="control-label col-md-2" for="rol">Rol</label>
                         <form:input 	id="rol"	path="rol" type="text" class="form:input-large"/>
                     </div>
                     <div class="form-group" >
-                        <label class="control-label col-md-2" for="dni">dni</label>
+                        <label class="control-label col-md-2" for="dni">Dni</label>
                         <form:input 	id="dni"	path="dni" type="text" class="form:input-large"/>
                     </div>
                         <div class="form-group">

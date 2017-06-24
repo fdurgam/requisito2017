@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: localhost
--- Tiempo de generación: 24-06-2017 a las 18:30:45
+-- Tiempo de generación: 24-06-2017 a las 19:19:04
 -- Versión del servidor: 5.5.46-0ubuntu0.14.04.2
 -- Versión de PHP: 5.5.9-1ubuntu4.14
 
@@ -30,16 +30,17 @@ CREATE TABLE IF NOT EXISTS `Estadorequisito` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `descripcionEstado` varchar(20) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=78 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=83 ;
 
 --
 -- Volcado de datos para la tabla `Estadorequisito`
 --
 
 INSERT INTO `Estadorequisito` (`id`, `descripcionEstado`) VALUES
-(75, 'Abierto'),
-(76, 'EnProgreso'),
-(77, 'Abierto');
+(79, 'Abierto'),
+(80, 'Abierto'),
+(81, 'Abierto'),
+(82, 'EnProgreso');
 
 -- --------------------------------------------------------
 
@@ -53,15 +54,14 @@ CREATE TABLE IF NOT EXISTS `Gestionrequisito` (
   `sistemaNombre` varchar(100) NOT NULL,
   `version` int(11) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=59 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=61 ;
 
 --
 -- Volcado de datos para la tabla `Gestionrequisito`
 --
 
 INSERT INTO `Gestionrequisito` (`id`, `nombre`, `sistemaNombre`, `version`) VALUES
-(57, 'Sistema', 'Requisito2017', 0),
-(58, 'Sistema', 'Requisito2017', 0);
+(60, 'Sistema', 'Requisito2017', 1);
 
 -- --------------------------------------------------------
 
@@ -77,17 +77,15 @@ CREATE TABLE IF NOT EXISTS `Proyecto` (
   `aplicacion_id` int(11) DEFAULT '0',
   PRIMARY KEY (`id`),
   KEY `aplicacion_id` (`aplicacion_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=90 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=94 ;
 
 --
 -- Volcado de datos para la tabla `Proyecto`
 --
 
 INSERT INTO `Proyecto` (`id`, `version`, `nombreProyecto`, `descripcionProyecto`, `aplicacion_id`) VALUES
-(86, 0, 'Expansion', 'Linea Electrica Salta', 57),
-(87, 0, 'Desarrollo', 'Sistema Stock', 57),
-(88, 0, 'Desarrollo', 'Sistema Stock', 58),
-(89, 0, 'Expansion', 'Linea Electrica Salta', 58);
+(92, 1, 'Desarrollo', 'Sistema Stock', 60),
+(93, 0, 'Expansion', 'Linea Electrica Salta', 60);
 
 -- --------------------------------------------------------
 
@@ -108,23 +106,18 @@ CREATE TABLE IF NOT EXISTS `Requisito` (
   UNIQUE KEY `id` (`id`),
   KEY `proyecto` (`proyecto`),
   KEY `estado` (`estado`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=219 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=233 ;
 
 --
 -- Volcado de datos para la tabla `Requisito`
 --
 
 INSERT INTO `Requisito` (`id`, `version`, `nombre`, `necesidad`, `prioridad`, `riesgo`, `proyecto`, `estado`) VALUES
-(209, 0, 'Vehiculo Traslado', 'Compra', 'Alta', 'Bajo', 86, 75),
-(210, 0, 'Banco Macro', 'Credito', 'Alta', 'Medio', NULL, NULL),
-(211, 1, 'Requerimiento', 'Analizar', 'Media', 'Bajo', 87, 75),
-(212, 1, 'Server', 'Contratacion', 'Alta', 'Bajo', 86, 76),
-(213, 0, 'Agua', 'Extraccion', 'Media', 'Bajo', 86, 75),
-(214, 1, 'Server', 'Contratacion', 'Alta', 'Bajo', 89, 77),
-(215, 1, 'Vehiculo Traslado', 'Compra', 'Alta', 'Bajo', 89, 77),
-(216, 0, 'Banco Macro', 'Credito', 'Alta', 'Medio', NULL, NULL),
-(217, 1, 'Agua', 'Extraccion', 'Media', 'Bajo', 89, 77),
-(218, 0, 'Requerimiento', 'Analizar', 'Media', 'Bajo', 88, 77);
+(224, 6, 'Server', 'Contratacion', 'Alta', 'Bajo', 92, 79),
+(225, 2, 'Vehiculo Traslado', 'Compra', 'Alta', 'Bajo', 93, 79),
+(226, 0, 'Banco Macro', 'Credito', 'Alta', 'Medio', NULL, 79),
+(227, 2, 'Agua', 'Extraccion', 'Media', 'Bajo', 93, 82),
+(228, 0, 'Requerimiento', 'Analizar', 'Media', 'Bajo', 92, 79);
 
 -- --------------------------------------------------------
 
@@ -143,10 +136,8 @@ CREATE TABLE IF NOT EXISTS `RequisitoCompuesto` (
 --
 
 INSERT INTO `RequisitoCompuesto` (`id`) VALUES
-(209),
-(212),
-(214),
-(215);
+(224),
+(225);
 
 -- --------------------------------------------------------
 
@@ -167,8 +158,7 @@ CREATE TABLE IF NOT EXISTS `RequisitoCompuesto_Requisito` (
 --
 
 INSERT INTO `RequisitoCompuesto_Requisito` (`compuesto_id`, `simple_id`) VALUES
-(209, 210),
-(215, 216);
+(225, 226);
 
 -- --------------------------------------------------------
 
@@ -186,10 +176,8 @@ CREATE TABLE IF NOT EXISTS `RequisitoSimple` (
 --
 
 INSERT INTO `RequisitoSimple` (`id`) VALUES
-(211),
-(213),
-(217),
-(218);
+(227),
+(228);
 
 -- --------------------------------------------------------
 
@@ -208,8 +196,9 @@ CREATE TABLE IF NOT EXISTS `Requisito_Abierto` (
 --
 
 INSERT INTO `Requisito_Abierto` (`id`) VALUES
-(75),
-(77);
+(79),
+(80),
+(81);
 
 -- --------------------------------------------------------
 
@@ -240,7 +229,7 @@ CREATE TABLE IF NOT EXISTS `Requisito_EnProgreso` (
 --
 
 INSERT INTO `Requisito_EnProgreso` (`id`) VALUES
-(76);
+(82);
 
 -- --------------------------------------------------------
 
@@ -256,17 +245,15 @@ CREATE TABLE IF NOT EXISTS `Stakeholder` (
   `rol` varchar(20) NOT NULL,
   `dni` varchar(10) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=88 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=92 ;
 
 --
 -- Volcado de datos para la tabla `Stakeholder`
 --
 
 INSERT INTO `Stakeholder` (`id`, `version`, `nombre`, `apellido`, `rol`, `dni`) VALUES
-(84, 0, 'Martin', 'Palermo', 'Analista Junior', '25678987'),
-(85, 0, 'Tito', 'Puente', 'Programador Junior', '25678907'),
-(86, 0, 'Martin', 'Palermo', 'Analista Junior', '25678987'),
-(87, 0, 'Tito', 'Puente', 'Programador Junior', '25678907');
+(90, 1, 'Tito', 'Puente', 'Programador Junior', '25678907'),
+(91, 0, 'Martin', 'Palermo', 'Analista Junior', '25678987');
 
 -- --------------------------------------------------------
 
@@ -287,10 +274,7 @@ CREATE TABLE IF NOT EXISTS `Stakeholder_Requisitos` (
 --
 
 INSERT INTO `Stakeholder_Requisitos` (`stakeholder_id`, `requisitos_id`) VALUES
-(84, 211),
-(85, 211),
-(86, 218),
-(87, 218);
+(91, 228);
 
 --
 -- Restricciones para tablas volcadas

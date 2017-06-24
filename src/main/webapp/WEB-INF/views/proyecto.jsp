@@ -22,20 +22,22 @@
             <h4>Detalles de Proyectos</h4>
             </div>
             <div class="col-md-offset-10">
-                 <a class="btn btn-primary" href="<spring:url	value="/Proyecto/nuevo"/>"  >Nuevo</a>
+                 <a class="btn btn-primary" href="<spring:url	value="/Proyecto/nuevo"/>">Nuevo</a>
             </div>   
             </div>
                  <table class="table table-striped">          
                 <tr> 
-                    <th>id</th>
-                    <th>nombre</th>
+                    <th>Id</th>
+                    <th>Nombre</th>
                     <th>Descripcion</th>     
+                    <th>Aplicacion</th> 
                 </tr>
             <c:forEach  items="${datos}" var="proyecto">
                 <tr>       
                     <td>${proyecto.id}</td>   
                     <td>${proyecto.nombreProyecto}</td>
                     <td>${proyecto.descripcionProyecto}</td>
+                    <td>${proyecto.aplicacion.id}</td>
                     <td>
                         <a class="btn btn-danger custom-width" onclick="return confirm('Seguro que desea eliminar?')" href="<spring:url	value='/Proyecto/eliminar/${proyecto.id}'/>">Eliminar</a>
                         <a class="btn btn-success custom-width" href="<spring:url	value='/Proyecto/update/${proyecto.id}'/>">Editar</a>

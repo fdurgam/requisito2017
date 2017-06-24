@@ -16,7 +16,7 @@
         <script src="${pageContext.request.contextPath}/resources/js/bootstrap.js" type="text/javascript"></script>
         <script src="${pageContext.request.contextPath}/resources/js/app.js" type="text/javascript"></script>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Alumno-Datos</title>
+        <title>Estado Requisito</title>
     </head>
     <body>
         <div class="container">         
@@ -25,16 +25,18 @@
               <table class="table table-striped">
                   <h4>Requisito</h4>
                <tr>   
-                    <th>id</th>
-                    <th>nombre</th>
+                    <th>Id</th>
+                    <th>Nombre</th>
                     <th>Descripcion</th>
                     <th>Estado</th> 
+                    <th>Proyecto</th> 
                 </tr>
                 <tr>          
                     <td>${requisito.id}</td>   
                     <td>${requisito.nombre}</td>
                     <td>${requisito.nombre}</td>
                     <td>${requisito.estado.descripcionEstado}</td>
+                     <td>${requisito.proyecto.id}</td>
                     <td></td>
                 </tr>
                    </table>

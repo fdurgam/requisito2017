@@ -17,16 +17,17 @@
         <script src="${pageContext.request.contextPath}/resources/js/bootstrap.js" type="text/javascript"></script>
         <script src="${pageContext.request.contextPath}/resources/js/app.js" type="text/javascript"></script>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Alumno-Datos</title>
+        <title>Requisitos Stakeholder</title>
     </head>
     <body>
         <div class="container">
             <%@include file="menu.jsp" %>
+            <h4>Stakeholder</h4>
             <table class="table table-striped">       
                 <tr>
-                    <th>id</th>
-                    <th>nombre</th>
-                    <th>apellido</th>
+                    <th>Id</th>
+                    <th>Nombre</th>
+                    <th>Apellido</th>
                     <th>Rol</th>
                     <th>Dni</th>
                 </tr>
@@ -45,10 +46,11 @@
               
    <%-- Detalles asociados --%>    
               <div class="container">          
-                <table class="table table-striped">     
+                <table class="table table-striped">   
+                    <h4>Requisito del Stakeholder</h4>
             <tr>
-                <th>id</th>
-                <th>nombre</th>
+                <th>Id</th>
+                <th>Nombre</th>
                 <th>Necesidad</th>
                 <th>Prioridad</th>
                 <th>Riesgo</th>

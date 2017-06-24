@@ -34,9 +34,9 @@
                 </div>
                  <table class="table table-striped">          
                     <tr>       
-                        <th>id</th>
-                        <th>nombre</th>
-                        <th>SistemaNombre</th>
+                        <th>ID</th>
+                        <th>Nombre Aplicacion</th>
+                        <th>Nombre del Sistema</th>
                     </tr>
                         <c:forEach  items="${datos}" var="gestion">
                             <tr>           

@@ -17,7 +17,7 @@
         <script src="${pageContext.request.contextPath}/resources/js/bootstrap.js" type="text/javascript"></script>
         <script src="${pageContext.request.contextPath}/resources/js/app.js" type="text/javascript"></script>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Alumno-Datos</title>
+        <title>Actualizacion Proyecto</title>
     </head>
     <body>
         <div class="container">      

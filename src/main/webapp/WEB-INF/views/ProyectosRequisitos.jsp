@@ -17,7 +17,7 @@
         <script src="${pageContext.request.contextPath}/resources/js/bootstrap.js" type="text/javascript"></script>
         <script src="${pageContext.request.contextPath}/resources/js/app.js" type="text/javascript"></script>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Alumno-Datos</title>
+        <title>Requisitos del Proyecto</title>
     </head>
     <body>
         <div class="container">       
@@ -25,14 +25,16 @@
                 <h4>Proyecto</h4>
                 <table class="table table-striped">     
             <tr> 
-                <th>id</th>
-                <th>nombre</th>
+                <th>Id</th>
+                <th>Nombre</th>
                 <th>Descripcion</th>
+                  <th>Aplicacion</th>
             </tr>
             <tr>           
                 <td>${proyecto.id}</td>   
                 <td>${proyecto.nombreProyecto}</td>
                 <td>${proyecto.descripcionProyecto}</td>
+                 <td>${proyecto.aplicacion.id}</td>
                </tr>  
                 </table>     
          </div>                 
@@ -43,8 +45,8 @@
            <table class="table table-striped">   
                <h4>Requisitos</h4>
             <tr>
-                <th>id</th>
-                <th>nombre</th>
+                <th>Id</th>
+                <th>Nombre</th>
                 <th>Necesidad</th>
                 <th>Prioridad</th>
                 <th>Riesgo</th>

@@ -27,12 +27,13 @@
                 </div>
                  <table class="table table-striped">    
             <tr>
-                <th>id</th>
-                <th>nombre</th>
-                <th>necesidad</th>
-                <th>prioriodad</th>
-                <th>riesgo</th>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Necesidad</th>
+                <th>Prioriodad</th>
+                <th>Riesgo</th>
                 <th>Estado</th>
+                <th>Proyecto</th>
             </tr>
             <c:forEach  items="${datos}" var="requisito">
                 <tr>       
@@ -42,6 +43,7 @@
                     <td>${requisito.prioridad}</td>
                     <td>${requisito.riesgo}</td>
                     <td>${requisito.estado.descripcionEstado}</td>    
+                    <td>${requisito.proyecto.id}</td>  
                     <td>
                         <a class="btn btn-danger custom-width" onclick="return confirm('Seguro que desea eliminar?')" href="<spring:url	value='/RequisitoCompuesto/eliminar/${requisito.id}'/>">Eliminar</a>
                         <a class="btn btn-success custom-width" href="<spring:url value='/RequisitoCompuesto/update/${requisito.id}'/>">Editar</a>

@@ -24,9 +24,9 @@
             <%@include file="menu.jsp" %>
             <div class="row">
                 <form:form  modelAttribute="updateGestion"  class="form-horizontal">
-                    <h2 align="center"> Modificar Datos Alumno </h2>
+                    <h2 align="center"> Modificar Aplicacion </h2>
                            <div class="form-group" >      
-                           <label class="control-label col-md-2" for="nombre">Nombre</label>          
+                           <label class="control-label col-md-2" for="nombre">Nombre Aplicacion</label>          
                            <form:input id="nombre"	path="nombre" type="text" class="form:input-large"/>
                           </div>
                         <div class="form-group" >        

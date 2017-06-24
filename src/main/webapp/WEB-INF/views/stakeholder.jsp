@@ -27,9 +27,9 @@
                 </div>
                  <table class="table table-striped">        
                  <tr>
-                      <th>id</th>
-                      <th>nombre</th>
-                      <th>apellido</th>
+                      <th>ID</th>
+                      <th>Nombre</th>
+                      <th>Apellido</th>
                       <th>Rol</th>
                       <th>DNI</th>
                 </tr>

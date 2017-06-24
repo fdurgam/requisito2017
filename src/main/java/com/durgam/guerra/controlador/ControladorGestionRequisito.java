@@ -82,7 +82,8 @@ public class ControladorGestionRequisito {
         RequisitoSimple req3Loop2017 = new  RequisitoSimple("Extraccion","Agua","Media","Bajo");
         RequisitoSimple req1sislab = new  RequisitoSimple("Analizar","Requerimiento","Media","Bajo");
         Requisito requisito=new Requisito("Credito","Banco Macro","Alta","Medio");
-        RequisitoAbierto estado = new RequisitoAbierto();
+        RequisitoAbierto estado = RequisitoAbierto.getEstado();
+        requisito.setEstado(estado);
         req1Loop2017.getRequisitosSimple().add(requisito);
         requisito.getCompuesto().add(req2Loop2017);
         req1Loop2017.setEstado(estado);
