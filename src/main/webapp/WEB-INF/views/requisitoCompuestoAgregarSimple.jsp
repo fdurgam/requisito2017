@@ -19,62 +19,62 @@
         <title>Agregar Requisito Compuesto</title>
     </head>
     <body>
-        <div class="container">    
-            <%@include file="menu.jsp" %>        
-            <div class="row">
-                <form:form  modelAttribute="updaterequisitocompuesto"  class="form-horizontal">
-                    <h2 align="center"> Agregar Requisito Compuesto</h2>
+       <div class="container">
+                 <%@include file="menu.jsp" %>
+                   <table class="table table-striped">   
+                       <h4>Requisito Compuesto</h4>
+                    <tr>
+                    <th>id</th>
+                        <th>nombre</th>
+                        <th>necesidad</th>
+                        <th>prioriodad</th>
+                        <th>riesgo</th>
+                        <th>Estado</th>  
+                    </tr>
+                    <tr>
+                        <td>${requisitoCompuesto.id}</td>   
+                        <td>${requisitoCompuesto.nombre}</td>
+                        <td>${requisitoCompuesto.necesidad}</td>
+                        <td>${requisitoCompuesto.prioridad}</td> 
+                         <td>${requisitoCompuesto.riesgo}</td>
+                         <td>${requisitoCompuesto.estado.descripcionEstado}</td>
+                        
+                        
+                   </tr>
+                    </table>
+                     
+                  </div>            
+               <div class="row">
+                <form:form  modelAttribute="requisito"  class="form-horizontal">
+                    <h2 align="center"> Agregar Requisito Simple </h2>
                     <div class="form-group" >
                         <label class="control-label col-md-2" for="nombre">Nombre</label>
                         <form:input 	id="nombre"	path="nombre" type="text" class="form:input-large"/>
                     </div>
-                    <div class="form-group" >
+                     <div class="form-group" >
                         <label class="control-label col-md-2" for="necesidad">Necesidad</label>
                         <form:input 	id="necesidad"	path="necesidad" type="text" class="form:input-large"/>
                     </div>
-                    <div class="form-group" >
+                      <div class="form-group" >
                         <label class="control-label col-md-2" for="prioridad">Prioridad</label>
                         <form:input 	id="prioridad"	path="prioridad" type="text" class="form:input-large"/>
                     </div>
-                        <div class="form-group" >
+                      <div class="form-group" >
                         <label class="control-label col-md-2" for="riesgo">Riesgo</label>
                         <form:input 	id="riesgo"	path="riesgo" type="text" class="form:input-large"/>
                     </div>
-            <div class="form-group" >
-                        <label class="control-label col-md-2" for="plan">Proyecto</label>                  
-                        <form:select id="proyecto" path="proyecto.id">
-                            <form:options items="${proyectos}" itemLabel="nombreProyecto" itemValue="id"></form:options>
-                        </form:select>
+                      <div class="form-group" >
+                        <label class="control-label col-md-2" for="riesgo">Riesgo</label>
+                        <form:input 	id="riesgo"	path="riesgo" type="text" class="form:input-large"/>
                     </div>
-                    <div class="form-group">
-                        <input type="submit" class="btn btn-primary col-md-offset-2" value="Aceptar"/>
-                    </div>                        
+                        <div class="form-group">
+                            <input type="submit" class="btn btn-primary col-md-offset-2" value="Aceptar"/>
+                        </div>                      
                 </form:form >
             </div>
-            
-            <div class="container">          
-                <table class="table table-striped">    
-                    <h4>Requisito Simples</h4>
-                <tr>
-                 <th>nombre</th>
-                        <th>necesidad</th>
-                        <th>prioriodad</th>
-                        <th>riesgo</th>
-                        <th>Estado</th>
-                </tr>
-                    <c:forEach  items="${updaterequisitocompuesto.requisitosSimple}" var="requisitoSimple">
-                <tr>     
-                    <td>${requisitoSimple.id}</td>   
-                    <td>${requisitoSimple.nombre}</td>
-                    <td>${requisitoSimple.necesidad}</td>
-                    <td>${requisitoSimple.prioridad}</td> 
-                         <td>${requisitoSimple.riesgo}</td>
-                         <td>${requisitoSimple.estado.descripcionEstado}</td>
-                    
-                </tr>
-                    </c:forEach>
-                    </table>
-                    </div> 
+        
+        
+      
         </div>
     </body>
 </html>

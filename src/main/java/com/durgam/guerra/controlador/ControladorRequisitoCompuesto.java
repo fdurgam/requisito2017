@@ -2,6 +2,7 @@ package com.durgam.guerra.controlador;
 import com.durgam.guerra.repositorio.RepositorioProyecto;
 import com.durgam.guerra.repositorio.RepositorioRequisitoCompuesto;
 import com.durgam.guerra.modelo.EstadoRequisito;
+import com.durgam.guerra.modelo.Requisito;
 import com.durgam.guerra.modelo.RequisitoAbierto;
 import com.durgam.guerra.modelo.RequisitoCompuesto;
 
@@ -61,4 +62,37 @@ public class ControladorRequisitoCompuesto {
         repositorio.actualizarRequisitoCompuesto(requisitoActual);
         return "redirect:/RequisitoCompuesto";
     } 
+    
+     @RequestMapping(value="/RequisitoCompuesto/AgregarSimple/{id}",method = RequestMethod.GET)
+    public String AgregarRequisitoSimpleACompuesto(@PathVariable("id") int id, Model model){
+        RequisitoCompuesto requisito = repositorio.encontrarRequisitoCompuestoPorId(id);
+        model.addAttribute("requisitoCompuesto", requisito);
+        return "requisitoCompuestoConSimples";
+        
+        
+    }
+    @RequestMapping(value="/RequisitoCompuesto/AgregarNuevoSimple/{id}",method = RequestMethod.GET)
+    public String NuevoRequisitoSimpleACompuesto(@PathVariable("id") int id, Model model){
+        RequisitoCompuesto requisito = repositorio.encontrarRequisitoCompuestoPorId(id);
+        model.addAttribute("requisitoCompuesto", requisito);
+       Requisito requisitoNuevo=new Requisito();       
+        model.addAttribute("requisito", requisitoNuevo); 
+        return "requisitoCompuestoAgregarSimple";
+        
+    }
+    
+     @RequestMapping(value="/RequisitoCompuesto/AgregarNuevoSimple/{id}",method = RequestMethod.POST)
+    public String ActualizarRequisitoCompuestoNuevo(@PathVariable("id") int id, @ModelAttribute("requisitoCompuesto") RequisitoCompuesto requisitoCompuesto ,@ModelAttribute("requisito") Requisito requisito){
+        requisitoCompuesto.setId(id);
+         //EstadoRequisito estado = RequisitoAbierto.getEstado();
+        //requisitoCompuesto.setEstado(estado);
+        //RequisitoCompuesto requisitoCompuestoActual = repositorio.encontrarRequisitoCompuestoPorId(id);
+        requisitoCompuesto.getRequisitosSimple().add(requisito);
+        
+       requisito.getCompuesto().add(requisitoCompuesto);
+        //repositorio.actualizarRequisitoCompuesto(requisitoCompuesto);
+        repositorio.actualizarRequisitoCompuestoNuevoRequisito(requisitoCompuesto);
+        return "redirect:/RequisitoCompuesto";
+    } 
+    
 }

@@ -1,5 +1,6 @@
 package com.durgam.guerra.repositorio;
 
+import com.durgam.guerra.modelo.Requisito;
 import com.durgam.guerra.modelo.RequisitoCompuesto;
 import java.util.List;
 
@@ -9,4 +10,6 @@ public interface RepositorioRequisitoCompuesto {
     public RequisitoCompuesto encontrarRequisitoCompuestoPorId(int id);
     public void eliminarRequisitoCompuesto(RequisitoCompuesto requisito);
     public void actualizarRequisitoCompuesto(RequisitoCompuesto requisitoactual); 
+
+    public void actualizarRequisitoCompuestoNuevoRequisito(RequisitoCompuesto requisito);
 }

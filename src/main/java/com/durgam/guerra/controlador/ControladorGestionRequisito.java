@@ -2,6 +2,7 @@ package com.durgam.guerra.controlador;
 import com.durgam.guerra.repositorio.RepositorioGestionRequisitoface;
 import com.durgam.guerra.modelo.Gestionrequisito;
 import com.durgam.guerra.modelo.Proyecto;
+import com.durgam.guerra.modelo.Requisito;
 import com.durgam.guerra.modelo.RequisitoAbierto;
 import com.durgam.guerra.modelo.RequisitoCompuesto;
 import com.durgam.guerra.modelo.RequisitoSimple;
@@ -80,7 +81,10 @@ public class ControladorGestionRequisito {
         RequisitoCompuesto req2Loop2017 = new  RequisitoCompuesto("Contratacion","Serte","Alta","Bajo");
         RequisitoSimple req3Loop2017 = new  RequisitoSimple("Extraccion","Agua","Media","Bajo");
         RequisitoSimple req1sislab = new  RequisitoSimple("Analizar","Requerimiento","Media","Bajo");
+        Requisito requisito=new Requisito("Nec PC","Nom PC","Pri PC","Reis PC");
         RequisitoAbierto estado = new RequisitoAbierto();
+        req1Loop2017.getRequisitosSimple().add(requisito);
+        requisito.getCompuesto().add(req2Loop2017);
         req1Loop2017.setEstado(estado);
         req2Loop2017.setEstado(estado);
         req3Loop2017.setEstado(estado);

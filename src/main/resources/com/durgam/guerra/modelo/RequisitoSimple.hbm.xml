@@ -6,7 +6,7 @@
         <key>
             <column name="id" not-null="true" />
         </key>
-        
+      
  </joined-subclass>
 </hibernate-mapping>
 

@@ -1,7 +1,11 @@
 package com.durgam.guerra.repositorio.impl;
+import com.durgam.guerra.modelo.Proyecto;
+import com.durgam.guerra.modelo.Requisito;
 import com.durgam.guerra.modelo.RequisitoCompuesto;
 import com.durgam.guerra.repositorio.RepositorioRequisitoCompuesto;
 import java.util.List;
+import org.hibernate.LockMode;
+import org.hibernate.LockOptions;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -56,9 +60,45 @@ public class RepositorioRequisitoCompuestoImp implements RepositorioRequisitoCom
 
     @Transactional
     @Override
-    public void actualizarRequisitoCompuesto(RequisitoCompuesto requisitoactual) {
+    public void actualizarRequisitoCompuesto(RequisitoCompuesto requisitoActual) {
         Session session = getSessionFactory().getCurrentSession();
-        session.saveOrUpdate(requisitoactual);
+         int id = requisitoActual.getId();
+         RequisitoCompuesto requisito=(RequisitoCompuesto)session.get(Requisito.class, id, new LockOptions(LockMode.OPTIMISTIC));      
+        requisito.setVersion(requisito.getVersion()-1);
+        requisito.setId(requisitoActual.getId());
+        requisito.setNecesidad(requisitoActual.getNecesidad());
+        requisito.setNombre(requisitoActual.getNombre());
+        requisito.setPrioridad(requisitoActual.getPrioridad());
+       // requisito.setProyecto(requisitoActual.getProyecto());
+        requisito.setRiesgo(requisitoActual.getRiesgo());
+        requisito.setStakeholders(requisitoActual.getStakeholders());
+       //requisito.setRequisitosSimple(requisitoActual.getRequisitosSimple());
+        
+        //session.saveOrUpdate(requisitoactual);
     }
+    @Transactional
+    @Override
+    public void actualizarRequisitoCompuestoNuevoRequisito(RequisitoCompuesto requisitoActual) {
+        Session session = getSessionFactory().getCurrentSession();
+        
+        
+         int id = requisitoActual.getId();
+         RequisitoCompuesto requisito=(RequisitoCompuesto)session.get(Requisito.class, id, new LockOptions(LockMode.OPTIMISTIC));
+       
+        requisito.setVersion(requisito.getVersion()-1);
+        //requisito.setRequisitosSimple(requisitoActual.getRequisitosSimple());
+        requisito.setId(requisitoActual.getId());
+        //requisito.setNecesidad(requisitoActual.getNecesidad());
+        //requisito.setNombre(requisitoActual.getNombre());
+        //requisito.setPrioridad(requisitoActual.getPrioridad());
+       // requisito.setProyecto(requisitoActual.getProyecto());
+        //requisito.setRiesgo(requisitoActual.getRiesgo());
+        //requisito.setStakeholders(requisitoActual.getStakeholders());
+       requisito.getRequisitosSimple().addAll(requisitoActual.getRequisitosSimple());
+
+     
+        
+    }
+  
  }
 

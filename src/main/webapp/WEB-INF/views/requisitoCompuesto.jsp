@@ -45,6 +45,8 @@
                     <td>
                         <a class="btn btn-danger custom-width" onclick="return confirm('Seguro que desea eliminar?')" href="<spring:url	value='/RequisitoCompuesto/eliminar/${requisito.id}'/>">Eliminar</a>
                         <a class="btn btn-success custom-width" href="<spring:url value='/RequisitoCompuesto/update/${requisito.id}'/>">Editar</a>
+                   <a class="btn btn-success custom-width" href="<spring:url value='/RequisitoCompuesto/AgregarSimple/${requisito.id}'/>">Agregar Simple</a>
+                        
                     </td>
                 </tr>
             </c:forEach>
