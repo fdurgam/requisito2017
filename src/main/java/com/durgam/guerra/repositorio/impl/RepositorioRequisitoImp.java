@@ -70,7 +70,7 @@ private SessionFactory sessionFactory;
         requisito.setNecesidad(requisitoActual.getNecesidad());
         requisito.setNombre(requisitoActual.getNombre());
         requisito.setPrioridad(requisitoActual.getPrioridad());
-       // requisito.setProyecto(requisitoActual.getProyecto());
+        requisito.setProyecto(requisitoActual.getProyecto());
         requisito.setRiesgo(requisitoActual.getRiesgo());
         requisito.setStakeholders(requisitoActual.getStakeholders());
         requisito.setCompuesto(requisitoActual.getCompuesto());

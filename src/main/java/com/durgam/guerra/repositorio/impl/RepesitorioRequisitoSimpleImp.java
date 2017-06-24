@@ -1,9 +1,12 @@
 package com.durgam.guerra.repositorio.impl;
 import com.durgam.guerra.repositorio.RepositorioRequisitoSimple;
 import com.durgam.guerra.modelo.Requisito;
+import com.durgam.guerra.modelo.RequisitoCompuesto;
 import com.durgam.guerra.modelo.RequisitoSimple;
 import com.durgam.guerra.repositorio.RepositorioRequisitoSimple;
 import java.util.List;
+import org.hibernate.LockMode;
+import org.hibernate.LockOptions;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -59,9 +62,20 @@ private SessionFactory sessionFactory;
     
     @Transactional
     @Override
-    public void actualizarRequisitoSimple(RequisitoSimple requisitoactual) {
+    public void actualizarRequisitoSimple(RequisitoSimple requisitoActual) {
        Session session = getSessionFactory().getCurrentSession();
-       session.saveOrUpdate(requisitoactual);
+  
+         int id = requisitoActual.getId();
+         RequisitoSimple requisito=(RequisitoSimple)session.get(Requisito.class, id, new LockOptions(LockMode.OPTIMISTIC));      
+        requisito.setVersion(requisito.getVersion()-1);
+        requisito.setId(requisitoActual.getId());
+        requisito.setNecesidad(requisitoActual.getNecesidad());
+        requisito.setNombre(requisitoActual.getNombre());
+        requisito.setPrioridad(requisitoActual.getPrioridad());
+        requisito.setRiesgo(requisitoActual.getRiesgo());
+        requisito.setProyecto(requisitoActual.getProyecto());
+        requisito.setStakeholders(requisitoActual.getStakeholders());       
+//session.saveOrUpdate(requisitoactual);
     }
  
 }

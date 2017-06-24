@@ -69,12 +69,10 @@ public class RepositorioRequisitoCompuestoImp implements RepositorioRequisitoCom
         requisito.setNecesidad(requisitoActual.getNecesidad());
         requisito.setNombre(requisitoActual.getNombre());
         requisito.setPrioridad(requisitoActual.getPrioridad());
-       // requisito.setProyecto(requisitoActual.getProyecto());
+      requisito.setProyecto(requisitoActual.getProyecto());
         requisito.setRiesgo(requisitoActual.getRiesgo());
         requisito.setStakeholders(requisitoActual.getStakeholders());
-       //requisito.setRequisitosSimple(requisitoActual.getRequisitosSimple());
-        
-        //session.saveOrUpdate(requisitoactual);
+       
     }
     @Transactional
     @Override
@@ -86,14 +84,9 @@ public class RepositorioRequisitoCompuestoImp implements RepositorioRequisitoCom
          RequisitoCompuesto requisito=(RequisitoCompuesto)session.get(Requisito.class, id, new LockOptions(LockMode.OPTIMISTIC));
        
         requisito.setVersion(requisito.getVersion()-1);
-        //requisito.setRequisitosSimple(requisitoActual.getRequisitosSimple());
+        
         requisito.setId(requisitoActual.getId());
-        //requisito.setNecesidad(requisitoActual.getNecesidad());
-        //requisito.setNombre(requisitoActual.getNombre());
-        //requisito.setPrioridad(requisitoActual.getPrioridad());
-       // requisito.setProyecto(requisitoActual.getProyecto());
-        //requisito.setRiesgo(requisitoActual.getRiesgo());
-        //requisito.setStakeholders(requisitoActual.getStakeholders());
+       
        requisito.getRequisitosSimple().addAll(requisitoActual.getRequisitosSimple());
 
      

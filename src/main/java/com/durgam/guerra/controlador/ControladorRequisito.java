@@ -2,6 +2,7 @@ package com.durgam.guerra.controlador;
 import com.durgam.guerra.repositorio.RepositorioProyecto;
 import com.durgam.guerra.repositorio.RepositorioRequisito;
 import com.durgam.guerra.modelo.EstadoRequisito;
+import com.durgam.guerra.modelo.Proyecto;
 import com.durgam.guerra.modelo.Requisito;
 import com.durgam.guerra.modelo.RequisitoAbierto;
 
@@ -58,8 +59,12 @@ public class ControladorRequisito {
     
     @RequestMapping(value="/Requisito/update/{id}",method = RequestMethod.POST)
     public String ActualizarRequisito(@PathVariable("id") int id, @ModelAttribute("updaterequisito") Requisito requisitoActual){
+      
         requisitoActual.setId(id);
+        Proyecto proyecto= repoProyecto.encontrarProyectoId(requisitoActual.getProyecto().getId());
+       requisitoActual.setProyecto(proyecto);
         EstadoRequisito estado = RequisitoAbierto.getEstado();
+        
         requisitoActual.setEstado(estado);
         repositorio.actualizarRequisito(requisitoActual);
         return "redirect:/Requisito";
