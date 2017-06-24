@@ -74,11 +74,28 @@ private SessionFactory sessionFactory;
         requisito.setRiesgo(requisitoActual.getRiesgo());
         requisito.setStakeholders(requisitoActual.getStakeholders());
         requisito.setCompuesto(requisitoActual.getCompuesto());
-        //requisito.setEstado(requisitoActual.getEstado());
+      
         
         
         
         
        // session.saveOrUpdate(requisitoactual);
+    }
+@Transactional
+    @Override
+    public void actualizarEstadoRequisito(Requisito requisitoActual) {
+        Session session = getSessionFactory().getCurrentSession();
+         int id = requisitoActual.getId();
+        Requisito requisito=(Requisito)session.get(Requisito.class, id, new LockOptions(LockMode.OPTIMISTIC));
+        requisito.setVersion(requisito.getVersion()-1);
+        requisito.setId(requisitoActual.getId());
+        requisito.setNecesidad(requisitoActual.getNecesidad());
+        requisito.setNombre(requisitoActual.getNombre());
+        requisito.setPrioridad(requisitoActual.getPrioridad());
+        requisito.setProyecto(requisitoActual.getProyecto());
+        requisito.setRiesgo(requisitoActual.getRiesgo());
+        requisito.setStakeholders(requisitoActual.getStakeholders());
+        requisito.setCompuesto(requisitoActual.getCompuesto());
+        requisito.setEstado(requisitoActual.getEstado());
     }
 }

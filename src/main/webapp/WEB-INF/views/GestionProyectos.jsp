@@ -55,8 +55,7 @@
                     <td>${proyecto.nombreProyecto}</td>
                     <td>${proyecto.descripcionProyecto}</td>
                     <td>
-                          <a class="btn btn-danger custom-width" onclick="return confirm('Seguro que desea eliminar?')" href="<spring:url value='/Proyecto/eliminar/${proyecto.id}'/>">Eliminar</a>
-                          <a class="btn btn-success custom-width" href="<spring:url	value='/Proyecto/update/${proyecto.id}'/>">Editar</a>
+                
                           <a class="btn btn-success custom-width" href="<spring:url	value='/Proyectos/Requisitos/${proyecto.id}'/>">Requisitos</a>
                     </td>
                 </tr>

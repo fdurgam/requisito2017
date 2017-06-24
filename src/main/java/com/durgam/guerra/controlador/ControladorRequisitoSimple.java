@@ -39,6 +39,8 @@ public class ControladorRequisitoSimple {
     
     @RequestMapping(value="/RequisitoSimple/nuevo",method = RequestMethod.POST)
     public String guardaProyecto(@ModelAttribute("requisito")RequisitoSimple requisito){
+       EstadoRequisito estado = RequisitoAbierto.getEstado();
+        requisito.setEstado(estado);
         repositorio.nuevoRequisitoSimple(requisito);
         return "redirect:/RequisitoSimple";
     }
@@ -63,9 +65,9 @@ public class ControladorRequisitoSimple {
         requisitoActual.setId(id);
         Proyecto proyecto= repoProyecto.encontrarProyectoId(requisitoActual.getProyecto().getId());
        requisitoActual.setProyecto(proyecto);
-        EstadoRequisito estado = RequisitoAbierto.getEstado();
+       // EstadoRequisito estado = RequisitoAbierto.getEstado();
         
-        requisitoActual.setEstado(estado);
+        //requisitoActual.setEstado(estado);
         repositorio.actualizarRequisitoSimple(requisitoActual);
         return "redirect:/RequisitoSimple";
     }

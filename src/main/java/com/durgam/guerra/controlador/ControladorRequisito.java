@@ -63,9 +63,9 @@ public class ControladorRequisito {
         requisitoActual.setId(id);
         Proyecto proyecto= repoProyecto.encontrarProyectoId(requisitoActual.getProyecto().getId());
        requisitoActual.setProyecto(proyecto);
-        EstadoRequisito estado = RequisitoAbierto.getEstado();
+        //EstadoRequisito estado = RequisitoAbierto.getEstado();
         
-        requisitoActual.setEstado(estado);
+        //requisitoActual.setEstado(estado);
         repositorio.actualizarRequisito(requisitoActual);
         return "redirect:/Requisito";
     }

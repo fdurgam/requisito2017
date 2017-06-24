@@ -5,4 +5,5 @@ import java.util.List;
 public interface RepositorioEstadosRequisito {
     public List<EstadoRequisito> obtenerTodosEstadosAbierto();
     void nuevoGestionRequisito(EstadoRequisito estado);
+    public EstadoRequisito encontrarEstadoPorId(Integer id);
 }

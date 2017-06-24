@@ -35,8 +35,8 @@
                    <td>${stakeholder.nombre}</td>
                    <td>${stakeholder.apellido}</td>
                    <td>${stakeholder.rol}</td>
-                   <td>${stakeholder.dni}</td>                 
-                       <td>   
+                   <td>${stakeholder.dni}</td> 
+                   
                        </td>
                 </tr>
            
@@ -53,6 +53,7 @@
                 <th>Prioridad</th>
                 <th>Riesgo</th>
                 <th>Estado</th> 
+                
             </tr>
                     <c:forEach  items="${stakeholder.requisitos}" var="requisito">
                 <tr>                    

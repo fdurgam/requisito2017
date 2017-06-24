@@ -48,7 +48,6 @@ http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd
                 <value>com/durgam/guerra/modelo/RequisitoSimple.hbm.xml</value>
                 <value>com/durgam/guerra/modelo/RequisitoCompuesto.hbm.xml</value>
                 <value>com/durgam/guerra/modelo/RequisitoAbierto.hbm.xml</value>
-          
                 <value>com/durgam/guerra/modelo/RequisitoCerrado.hbm.xml</value>
                 <value>com/durgam/guerra/modelo/RequisitoEnProgreso.hbm.xml</value>
                 <value>com/durgam/guerra/modelo/EstadoRequisito.hbm.xml</value>

@@ -9,4 +9,6 @@ public interface RepositorioRequisito {
    public Requisito encontrarRequisitoPorId(int id);
    public void eliminarRequisito(Requisito requisito);
    public void actualizarRequisito(Requisito requisitoactual);
+
+    public void actualizarEstadoRequisito(Requisito requisito);
    }

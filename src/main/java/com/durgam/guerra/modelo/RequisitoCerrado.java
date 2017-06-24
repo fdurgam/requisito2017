@@ -19,6 +19,7 @@ private static RequisitoCerrado estado;
     
     private void cargarEstadosSiguientes() {
         Set<EstadoRequisito> Estsiguientes = new HashSet<EstadoRequisito>(0);
+       
         this.setSiguientes(Estsiguientes);
     }
 }

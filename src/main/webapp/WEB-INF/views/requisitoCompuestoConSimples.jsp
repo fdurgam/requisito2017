@@ -52,12 +52,13 @@
 --%>                    
               <div class="container">          
                 <table class="table table-striped">    
-                    <h4>Proyectos</h4>
+                    <h4>Requisito Simples</h4>
                 <tr>
-                 <th>nombre</th>
+                    <th>ID</th>    
+                    <th>nombre</th>
                         <th>necesidad</th>
                         <th>prioriodad</th>
-                        <th>riesgo</th>
+                        <th>Riesgo</th>
                         <th>Estado</th>
                 </tr>
                     <c:forEach  items="${requisitoCompuesto.requisitosSimple}" var="requisitoSimple">
@@ -66,12 +67,10 @@
                     <td>${requisitoSimple.nombre}</td>
                     <td>${requisitoSimple.necesidad}</td>
                     <td>${requisitoSimple.prioridad}</td> 
-                         <td>${requisitoSimple.riesgo}</td>
-                         <td>${requisitoSimple.estado.descripcionEstado}</td>
+                    <td>${requisitoSimple.riesgo}</td>
+                    <td>${requisitoSimple.estado.descripcionEstado}</td>
                     <td>
-                          <a class="btn btn-danger custom-width" onclick="return confirm('Seguro que desea eliminar?')" href="<spring:url value='/Proyecto/eliminar/${proyecto.id}'/>">Eliminar</a>
-                          <a class="btn btn-success custom-width" href="<spring:url	value='/Proyecto/update/${proyecto.id}'/>">Editar</a>
-                          <a class="btn btn-success custom-width" href="<spring:url	value='/Proyectos/Requisitos/${proyecto.id}'/>">Requisitos</a>
+                         
                     </td>
                 </tr>
                     </c:forEach>

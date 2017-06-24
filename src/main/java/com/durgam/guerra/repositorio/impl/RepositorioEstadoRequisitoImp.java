@@ -1,5 +1,6 @@
 package com.durgam.guerra.repositorio.impl;
 import com.durgam.guerra.modelo.EstadoRequisito;
+import com.durgam.guerra.modelo.Stakeholder;
 import com.durgam.guerra.repositorio.RepositorioEstadosRequisito;
 import java.util.List;
 import org.hibernate.Query;
@@ -38,4 +39,12 @@ private SessionFactory sessionFactory;
        Session session = getSessionFactory().getCurrentSession();
        session.save(estado);
     }    
+  @Transactional
+    @Override
+    public EstadoRequisito encontrarEstadoPorId(Integer id) {
+        Session session = getSessionFactory().getCurrentSession();
+        Query query = session.createQuery("FROM Estadorequisito where id="+Integer.toString(id));
+        EstadoRequisito estadoRequisito= (EstadoRequisito)query.uniqueResult();
+        return estadoRequisito; 
+    }
 }

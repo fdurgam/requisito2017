@@ -36,7 +36,9 @@ public class ControladorRequisitoCompuesto {
     
     @RequestMapping(value="/RequisitoCompuesto/nuevo",method = RequestMethod.POST)
      public String guardaRequisitoCompuesto(@ModelAttribute("requisito")RequisitoCompuesto requisito){      
-     repositorio.nuevoRequisitoCompuesto(requisito);
+      EstadoRequisito estado = RequisitoAbierto.getEstado();
+        requisito.setEstado(estado);
+         repositorio.nuevoRequisitoCompuesto(requisito);
      return "redirect:/RequisitoCompuesto";
     }
      
@@ -81,7 +83,8 @@ public class ControladorRequisitoCompuesto {
     public String NuevoRequisitoSimpleACompuesto(@PathVariable("id") int id, Model model){
         RequisitoCompuesto requisito = repositorio.encontrarRequisitoCompuestoPorId(id);
         model.addAttribute("requisitoCompuesto", requisito);
-       Requisito requisitoNuevo=new Requisito();       
+       Requisito requisitoNuevo=new Requisito();
+        
         model.addAttribute("requisito", requisitoNuevo); 
         return "requisitoCompuestoAgregarSimple";
         
@@ -93,6 +96,8 @@ public class ControladorRequisitoCompuesto {
          //EstadoRequisito estado = RequisitoAbierto.getEstado();
         //requisitoCompuesto.setEstado(estado);
         //RequisitoCompuesto requisitoCompuestoActual = repositorio.encontrarRequisitoCompuestoPorId(id);
+        requisito.setEstado(requisitoCompuesto.getEstado());
+        
         requisitoCompuesto.getRequisitosSimple().add(requisito);
         
        requisito.getCompuesto().add(requisitoCompuesto);

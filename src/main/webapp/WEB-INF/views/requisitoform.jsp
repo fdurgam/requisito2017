@@ -41,10 +41,7 @@
                         <label class="control-label col-md-2" for="riesgo">Riesgo</label>
                         <form:input 	id="riesgo"	path="riesgo" type="text" class="form:input-large"/>
                     </div>
-                      <div class="form-group" >
-                        <label class="control-label col-md-2" for="riesgo">Riesgo</label>
-                        <form:input 	id="riesgo"	path="riesgo" type="text" class="form:input-large"/>
-                    </div>
+                      
                         <div class="form-group">
                             <input type="submit" class="btn btn-primary col-md-offset-2" value="Aceptar"/>
                         </div>                      
