@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.durgam.guerra.modelo.Gestionrequisito" table="Gestionrequisito" catalog="requisitoxml2">
+        <id name="id" type="java.lang.Integer">
+            <column name="id" />
+            <generator class="identity"></generator>
+        </id>
+         <version name="version" column="version" type="java.lang.Integer"/>
+        <property name="nombre" type="string">
+            <column name="nombre" length="100" not-null="true" />
+        </property>
+        <property name="sistemaNombre" type="string">
+            <column name="sistemaNombre" length="100" not-null="true" />
+        </property>
+  <set name="proyectos" table="Proyecto" cascade="save-update" inverse="true" lazy="false" fetch="select">
+            <key>
+                <column name="aplicacion_id" not-null="true" />
+            </key>
+            <one-to-many class="com.durgam.guerra.modelo.Proyecto" />
+        </set>
+    </class>
+</hibernate-mapping>
