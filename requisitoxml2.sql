@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: localhost
--- Tiempo de generación: 23-06-2017 a las 21:44:03
+-- Tiempo de generación: 24-06-2017 a las 18:30:45
 -- Versión del servidor: 5.5.46-0ubuntu0.14.04.2
 -- Versión de PHP: 5.5.9-1ubuntu4.14
 
@@ -30,18 +30,16 @@ CREATE TABLE IF NOT EXISTS `Estadorequisito` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `descripcionEstado` varchar(20) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=53 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=78 ;
 
 --
 -- Volcado de datos para la tabla `Estadorequisito`
 --
 
 INSERT INTO `Estadorequisito` (`id`, `descripcionEstado`) VALUES
-(48, 'Abierto'),
-(49, 'Abierto'),
-(50, 'Abierto'),
-(51, 'Abierto'),
-(52, 'Abierto');
+(75, 'Abierto'),
+(76, 'EnProgreso'),
+(77, 'Abierto');
 
 -- --------------------------------------------------------
 
@@ -55,16 +53,15 @@ CREATE TABLE IF NOT EXISTS `Gestionrequisito` (
   `sistemaNombre` varchar(100) NOT NULL,
   `version` int(11) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=46 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=59 ;
 
 --
 -- Volcado de datos para la tabla `Gestionrequisito`
 --
 
 INSERT INTO `Gestionrequisito` (`id`, `nombre`, `sistemaNombre`, `version`) VALUES
-(42, 'Sistema 1', 'Aplicacion web para Afip', 3),
-(44, 'Sistema', 'Requisito', 0),
-(45, 'Sistema', 'Requisito', 0);
+(57, 'Sistema', 'Requisito2017', 0),
+(58, 'Sistema', 'Requisito2017', 0);
 
 -- --------------------------------------------------------
 
@@ -80,21 +77,17 @@ CREATE TABLE IF NOT EXISTS `Proyecto` (
   `aplicacion_id` int(11) DEFAULT '0',
   PRIMARY KEY (`id`),
   KEY `aplicacion_id` (`aplicacion_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=66 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=90 ;
 
 --
 -- Volcado de datos para la tabla `Proyecto`
 --
 
 INSERT INTO `Proyecto` (`id`, `version`, `nombreProyecto`, `descripcionProyecto`, `aplicacion_id`) VALUES
-(58, 0, 'rgg', 'reeer', 42),
-(59, 0, 'rgg', 'retr', 42),
-(60, 0, 'rgg', 're', 42),
-(61, 0, 'rggghhg', 're', 42),
-(62, 0, 'Desarrollo', 'Sistema Stock', 44),
-(63, 0, 'Expansion', 'Linea Electrica Salta', 44),
-(64, 0, 'Desarrollo', 'Sistema Stock', 45),
-(65, 0, 'Expansion', 'Linea Electrica Salta', 45);
+(86, 0, 'Expansion', 'Linea Electrica Salta', 57),
+(87, 0, 'Desarrollo', 'Sistema Stock', 57),
+(88, 0, 'Desarrollo', 'Sistema Stock', 58),
+(89, 0, 'Expansion', 'Linea Electrica Salta', 58);
 
 -- --------------------------------------------------------
 
@@ -115,22 +108,23 @@ CREATE TABLE IF NOT EXISTS `Requisito` (
   UNIQUE KEY `id` (`id`),
   KEY `proyecto` (`proyecto`),
   KEY `estado` (`estado`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=128 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=219 ;
 
 --
 -- Volcado de datos para la tabla `Requisito`
 --
 
 INSERT INTO `Requisito` (`id`, `version`, `nombre`, `necesidad`, `prioridad`, `riesgo`, `proyecto`, `estado`) VALUES
-(115, 1, 'gs', 'gag', 'gsg', 'asg,sg', NULL, 49),
-(116, 2, 'Serte', 'Contratacion', 'Alta', 'Bajo', 63, 49),
-(117, 4, 'Req1', 'Compra', 'Alta', 'Bajo', 63, 48),
-(118, 1, 'Agua', 'Extraccion', 'Media', 'Bajo', 63, 48),
-(119, 0, 'Requerimiento', 'Analizar', 'Media', 'Bajo', 62, 48),
-(124, 1, 'Serte', 'Contratacion', 'Alta', 'Bajo', 65, 52),
-(125, 1, 'Req1', 'Compra', 'Alta', 'Bajo', 65, 52),
-(126, 1, 'Agua', 'Extraccion', 'Media', 'Bajo', 65, 52),
-(127, 0, 'Requerimiento', 'Analizar', 'Media', 'Bajo', 64, 52);
+(209, 0, 'Vehiculo Traslado', 'Compra', 'Alta', 'Bajo', 86, 75),
+(210, 0, 'Banco Macro', 'Credito', 'Alta', 'Medio', NULL, NULL),
+(211, 1, 'Requerimiento', 'Analizar', 'Media', 'Bajo', 87, 75),
+(212, 1, 'Server', 'Contratacion', 'Alta', 'Bajo', 86, 76),
+(213, 0, 'Agua', 'Extraccion', 'Media', 'Bajo', 86, 75),
+(214, 1, 'Server', 'Contratacion', 'Alta', 'Bajo', 89, 77),
+(215, 1, 'Vehiculo Traslado', 'Compra', 'Alta', 'Bajo', 89, 77),
+(216, 0, 'Banco Macro', 'Credito', 'Alta', 'Medio', NULL, NULL),
+(217, 1, 'Agua', 'Extraccion', 'Media', 'Bajo', 89, 77),
+(218, 0, 'Requerimiento', 'Analizar', 'Media', 'Bajo', 88, 77);
 
 -- --------------------------------------------------------
 
@@ -149,10 +143,10 @@ CREATE TABLE IF NOT EXISTS `RequisitoCompuesto` (
 --
 
 INSERT INTO `RequisitoCompuesto` (`id`) VALUES
-(116),
-(117),
-(124),
-(125);
+(209),
+(212),
+(214),
+(215);
 
 -- --------------------------------------------------------
 
@@ -167,6 +161,14 @@ CREATE TABLE IF NOT EXISTS `RequisitoCompuesto_Requisito` (
   UNIQUE KEY `simple_id` (`simple_id`),
   KEY `compuesto_id` (`compuesto_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `RequisitoCompuesto_Requisito`
+--
+
+INSERT INTO `RequisitoCompuesto_Requisito` (`compuesto_id`, `simple_id`) VALUES
+(209, 210),
+(215, 216);
 
 -- --------------------------------------------------------
 
@@ -184,10 +186,10 @@ CREATE TABLE IF NOT EXISTS `RequisitoSimple` (
 --
 
 INSERT INTO `RequisitoSimple` (`id`) VALUES
-(118),
-(119),
-(126),
-(127);
+(211),
+(213),
+(217),
+(218);
 
 -- --------------------------------------------------------
 
@@ -206,11 +208,8 @@ CREATE TABLE IF NOT EXISTS `Requisito_Abierto` (
 --
 
 INSERT INTO `Requisito_Abierto` (`id`) VALUES
-(48),
-(49),
-(50),
-(51),
-(52);
+(75),
+(77);
 
 -- --------------------------------------------------------
 
@@ -236,6 +235,13 @@ CREATE TABLE IF NOT EXISTS `Requisito_EnProgreso` (
   KEY `id` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Volcado de datos para la tabla `Requisito_EnProgreso`
+--
+
+INSERT INTO `Requisito_EnProgreso` (`id`) VALUES
+(76);
+
 -- --------------------------------------------------------
 
 --
@@ -250,28 +256,17 @@ CREATE TABLE IF NOT EXISTS `Stakeholder` (
   `rol` varchar(20) NOT NULL,
   `dni` varchar(10) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=64 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=88 ;
 
 --
 -- Volcado de datos para la tabla `Stakeholder`
 --
 
 INSERT INTO `Stakeholder` (`id`, `version`, `nombre`, `apellido`, `rol`, `dni`) VALUES
-(49, 0, 'fernando', 'Fernando', 'fd', 'f'),
-(50, 5, 'fernando', 'Fernando', 'fdfdf', 'fffff'),
-(51, 0, 'tt', 'tt', 'tt', 'tt'),
-(52, 0, 'fernando', 'Fernando', 'fd', 'f'),
-(53, 1, 'fernando', 'Fernando', 'fd', 'furbx'),
-(54, 0, 'fernando', 'Fernando', 'fd', 'f7i77i'),
-(55, 0, 'fernando', 'Fernando', 'fdwfwfwe', 'ffwefe'),
-(56, 0, 'fernando', 'Fernando', 'fdfdf', 'f'),
-(57, 0, 'fernando', 'Fernando', 'fdfdf', 'fffff'),
-(58, 0, 'fernando', 'Fernando', 'fdfdf', 'fffff'),
-(59, 0, 'fernando', 'Fernando', 'fd', 'furbx'),
-(60, 0, 'Tito', 'Puente', 'Programador Junior', '25678907'),
-(61, 0, 'Martin', 'Palermo', 'Analista Juniro', '25678987'),
-(62, 0, 'Tito', 'Puente', 'Programador Junior', '25678907'),
-(63, 0, 'Martin', 'Palermo', 'Analista Juniro', '25678987');
+(84, 0, 'Martin', 'Palermo', 'Analista Junior', '25678987'),
+(85, 0, 'Tito', 'Puente', 'Programador Junior', '25678907'),
+(86, 0, 'Martin', 'Palermo', 'Analista Junior', '25678987'),
+(87, 0, 'Tito', 'Puente', 'Programador Junior', '25678907');
 
 -- --------------------------------------------------------
 
@@ -292,10 +287,10 @@ CREATE TABLE IF NOT EXISTS `Stakeholder_Requisitos` (
 --
 
 INSERT INTO `Stakeholder_Requisitos` (`stakeholder_id`, `requisitos_id`) VALUES
-(60, 119),
-(61, 119),
-(62, 127),
-(63, 127);
+(84, 211),
+(85, 211),
+(86, 218),
+(87, 218);
 
 --
 -- Restricciones para tablas volcadas
@@ -324,8 +319,8 @@ ALTER TABLE `RequisitoCompuesto`
 -- Filtros para la tabla `RequisitoCompuesto_Requisito`
 --
 ALTER TABLE `RequisitoCompuesto_Requisito`
-  ADD CONSTRAINT `RequisitoCompuesto_Requisito_ibfk_1` FOREIGN KEY (`compuesto_id`) REFERENCES `RequisitoCompuesto` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `RequisitoCompuesto_Requisito_ibfk_2` FOREIGN KEY (`simple_id`) REFERENCES `RequisitoSimple` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `RequisitoCompuesto_Requisito_ibfk_2` FOREIGN KEY (`simple_id`) REFERENCES `Requisito` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `RequisitoCompuesto_Requisito_ibfk_1` FOREIGN KEY (`compuesto_id`) REFERENCES `RequisitoCompuesto` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Filtros para la tabla `RequisitoSimple`

@@ -16,22 +16,23 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
 public class ControladorCambioEstados {
-    @Autowired
-    RepositorioRequisito repositorio;
+     @Autowired
+   private RepositorioRequisito servicio;
+    
     
     @RequestMapping(value="/Requisito/EnProgreso/{id}",method = RequestMethod.GET)
     public String CambioEstadoRequisitoEnProgreso(@PathVariable("id") int id, Model model){   
-        Requisito requisito = repositorio.encontrarRequisitoPorId(id);
+        Requisito requisito = servicio.encontrarRequisitoPorId(id);
         requisito.setEstado(RequisitoEnProgreso.getEstado());
-        repositorio.actualizarEstadoRequisito(requisito);
+        servicio.actualizarEstadoRequisito(requisito);
         return "redirect:/Requisito/Estados/"+id;
      }
     
     @RequestMapping(value="/Requisito/Cerrado/{id}",method = RequestMethod.GET)
     public String CambioEstadoRequisitoCerrado(@PathVariable("id") int id, Model model){
-        Requisito requisito = repositorio.encontrarRequisitoPorId(id);
+        Requisito requisito = servicio.encontrarRequisitoPorId(id);
         requisito.setEstado(RequisitoCerrado.getEstado());
-        repositorio.actualizarEstadoRequisito(requisito);
+        servicio.actualizarEstadoRequisito(requisito);
         return "redirect:/Requisito/Estados/"+id;
      }
     

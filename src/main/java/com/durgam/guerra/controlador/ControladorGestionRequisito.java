@@ -8,6 +8,7 @@ import com.durgam.guerra.modelo.RequisitoCompuesto;
 import com.durgam.guerra.modelo.RequisitoSimple;
 import com.durgam.guerra.modelo.Stakeholder;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -19,13 +20,12 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @Controller
 public class ControladorGestionRequisito {
    @Autowired
-   RepositorioGestionRequisitoface repositorio;
-   @Autowired
-   RepositorioGestionRequisitoface repAp;
+   private RepositorioGestionRequisitoface servicio;
+   
     
     @RequestMapping("/Gestion")
     public String GestionRequisito(Model model){
-        model.addAttribute("datos",repositorio.obtenerTodosGestionRequisito());
+        model.addAttribute("datos",servicio.obtenerTodosGestionRequisito());
         return "gestionRequisito"; 
     }
     
@@ -38,33 +38,33 @@ public class ControladorGestionRequisito {
     
     @RequestMapping(value="/Gestion/nuevo",method = RequestMethod.POST)
     public String guardaGestionrequisito(@ModelAttribute("gestion") Gestionrequisito gestionnuevo){
-        repositorio.nuevoGestionRequisito(gestionnuevo);
+        servicio.nuevoGestionRequisito(gestionnuevo);
         return "redirect:/Gestion";
     }
     
     @RequestMapping(value="/Gestion/update/{id}",method = RequestMethod.GET)
     public String updateGestion(@PathVariable("id") int id, Model model){
-        Gestionrequisito gestion = repositorio.encontrarGestionrequisitoPorId(id);
+        Gestionrequisito gestion = servicio.encontrarGestionrequisitoPorId(id);
         model.addAttribute("updateGestion", gestion);
         return "gestionRequisitoUpdate";
     }
 
     @RequestMapping(value="/Gestion/update/{id}",method = RequestMethod.POST)
     public String ActualizarGestionrequisito(@PathVariable("id") int id, @ModelAttribute("updateGestion") Gestionrequisito gestionactual){
-        repositorio.actualizarGestionrequisito(gestionactual);
+        servicio.actualizarGestionrequisito(gestionactual);
         return "redirect:/Gestion";
     }
    
     @RequestMapping(value="/Gestion/eliminar/{id}",method = RequestMethod.GET)
     public String eliminarGestionrequisito( @PathVariable("id") int id){
-      Gestionrequisito ap = repositorio.encontrarGestionrequisitoPorId(id);
-      repositorio.eliminarGestionrequisito(ap);
+      Gestionrequisito ap = servicio.encontrarGestionrequisitoPorId(id);
+      servicio.eliminarGestionrequisito(ap);
       return "redirect:/Gestion";
     }
     
     @RequestMapping(value="/Gestion/Proyectos/{id}")
     public String GestionProyectos( @PathVariable("id") int id, Model model){
-     Gestionrequisito gestion = repositorio.encontrarGestionrequisitoPorId(id);
+     Gestionrequisito gestion = servicio.encontrarGestionrequisitoPorId(id);
      model.addAttribute("gestion", gestion);
      model.addAttribute("proyectos", gestion.getProyectos().size());
      return "GestionProyectos";
@@ -72,16 +72,16 @@ public class ControladorGestionRequisito {
      
     @RequestMapping("/CargarDatos")  
     public String componer(Model model){
-        Gestionrequisito ap = new Gestionrequisito("Sistema","Requisito");
-        Stakeholder analista= new Stakeholder("Martin","Palermo","Analista Juniro", "25678987");
+        Gestionrequisito ap = new Gestionrequisito("Sistema","Requisito2017");
+        Stakeholder analista= new Stakeholder("Martin","Palermo","Analista Junior", "25678987");
         Stakeholder  programador= new Stakeholder("Tito","Puente","Programador Junior", "25678907");
         Proyecto loop2017 = new Proyecto("Expansion","Linea Electrica Salta");
         Proyecto sislab = new Proyecto("Desarrollo","Sistema Stock");
-        RequisitoCompuesto req1Loop2017 = new  RequisitoCompuesto("Compra","Req1","Alta","Bajo");
-        RequisitoCompuesto req2Loop2017 = new  RequisitoCompuesto("Contratacion","Serte","Alta","Bajo");
+        RequisitoCompuesto req1Loop2017 = new  RequisitoCompuesto("Compra","Vehiculo Traslado","Alta","Bajo");
+        RequisitoCompuesto req2Loop2017 = new  RequisitoCompuesto("Contratacion","Server","Alta","Bajo");
         RequisitoSimple req3Loop2017 = new  RequisitoSimple("Extraccion","Agua","Media","Bajo");
         RequisitoSimple req1sislab = new  RequisitoSimple("Analizar","Requerimiento","Media","Bajo");
-        Requisito requisito=new Requisito("Nec PC","Nom PC","Pri PC","Reis PC");
+        Requisito requisito=new Requisito("Credito","Banco Macro","Alta","Medio");
         RequisitoAbierto estado = new RequisitoAbierto();
         req1Loop2017.getRequisitosSimple().add(requisito);
         requisito.getCompuesto().add(req2Loop2017);
@@ -109,7 +109,7 @@ public class ControladorGestionRequisito {
         sislab.setAplicacion(ap);
         ap.getProyectos().add(loop2017);  
         ap.getProyectos().add(sislab);  
-        repAp.nuevoGestionRequisito(ap);
+        servicio.nuevoGestionRequisito(ap);
         return "redirect:/Gestion";
    } 
 }
