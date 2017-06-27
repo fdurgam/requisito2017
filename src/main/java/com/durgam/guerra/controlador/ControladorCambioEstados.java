@@ -1,12 +1,8 @@
 package com.durgam.guerra.controlador;
-
-import com.durgam.guerra.modelo.EstadoRequisito;
 import com.durgam.guerra.modelo.Requisito;
 import com.durgam.guerra.modelo.RequisitoCerrado;
 import com.durgam.guerra.modelo.RequisitoEnProgreso;
-
 import com.durgam.guerra.repositorio.RepositorioRequisito;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -34,9 +30,7 @@ public class ControladorCambioEstados {
         requisito.setEstado(RequisitoCerrado.getEstado());
         servicio.actualizarEstadoRequisito(requisito);
         return "redirect:/Requisito/Estados/"+id;
-     }
-    
-        
+     }    
     }
     
 

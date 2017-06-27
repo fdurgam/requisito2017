@@ -3,7 +3,6 @@ import com.durgam.guerra.repositorio.RepositorioGestionRequisitoface;
 import com.durgam.guerra.repositorio.RepositorioProyecto;
 import com.durgam.guerra.modelo.Gestionrequisito;
 import com.durgam.guerra.modelo.Proyecto;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,9 +14,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
 public class ControladorProyecto {
-@Autowired
+    @Autowired
     RepositorioProyecto repositorio;
-@Autowired
+    @Autowired
     RepositorioGestionRequisitoface repositorioAp;
     @RequestMapping("/Proyecto")
     public String mostrarproyectos(Model model){
@@ -26,7 +25,7 @@ public class ControladorProyecto {
     }
     
     @RequestMapping(value="/Proyecto/eliminar/{id}",method = RequestMethod.GET)
-    public String eliminarProyecto( @PathVariable("id") int id){
+    public String eliminarProyecto(@PathVariable("id") int id){
         Proyecto documento= repositorio.encontrarProyectoPorId(id);
         repositorio.eliminarProyecto(documento);
         return "redirect:/Proyecto";
@@ -40,9 +39,9 @@ public class ControladorProyecto {
     }
     
     @RequestMapping(value="/Proyecto/nuevo",method = RequestMethod.POST)
-     public String guardaProyecto(@ModelAttribute("proyecto") Proyecto proyecto){
-     repositorio.nuevoProyecto(proyecto);
-     return "redirect:/Proyecto";
+        public String guardaProyecto(@ModelAttribute("proyecto") Proyecto proyecto){
+        repositorio.nuevoProyecto(proyecto);
+        return "redirect:/Proyecto";
     }
 
     @RequestMapping(value="/Proyecto/update/{id}",method = RequestMethod.GET)

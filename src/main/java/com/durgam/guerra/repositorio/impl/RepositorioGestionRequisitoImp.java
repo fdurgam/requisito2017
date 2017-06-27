@@ -1,6 +1,5 @@
 package com.durgam.guerra.repositorio.impl;
 import com.durgam.guerra.modelo.Gestionrequisito;
-import com.durgam.guerra.modelo.Proyecto;
 import java.util.List;
 import org.hibernate.Query;
 import org.hibernate.Session;
@@ -54,9 +53,8 @@ private SessionFactory sessionFactory;
     @Override
     public void actualizarGestionrequisito(Gestionrequisito ap) {
         Session session = getSessionFactory().getCurrentSession();
-          int id = ap.getId();
-         Gestionrequisito gestion=(Gestionrequisito)session.get(Gestionrequisito.class, id, new LockOptions(LockMode.OPTIMISTIC));
-       
+        int id = ap.getId();
+        Gestionrequisito gestion=(Gestionrequisito)session.get(Gestionrequisito.class, id, new LockOptions(LockMode.OPTIMISTIC));
         gestion.setVersion(gestion.getVersion()-1);
         gestion.setId(ap.getId());
         gestion.setNombre(ap.getNombre());

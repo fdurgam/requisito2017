@@ -6,7 +6,6 @@ import com.durgam.guerra.modelo.Proyecto;
 import com.durgam.guerra.modelo.Requisito;
 import com.durgam.guerra.modelo.RequisitoAbierto;
 import com.durgam.guerra.modelo.RequisitoCompuesto;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -38,7 +37,7 @@ public class ControladorRequisitoCompuesto {
      public String guardaRequisitoCompuesto(@ModelAttribute("requisito")RequisitoCompuesto requisito){      
       EstadoRequisito estado = RequisitoAbierto.getEstado();
         requisito.setEstado(estado);
-         repositorio.nuevoRequisitoCompuesto(requisito);
+        repositorio.nuevoRequisitoCompuesto(requisito);
      return "redirect:/RequisitoCompuesto";
     }
      
@@ -60,12 +59,9 @@ public class ControladorRequisitoCompuesto {
     @RequestMapping(value="/RequisitoCompuesto/update/{id}",method = RequestMethod.POST)
     public String ActualizarRequisitoCompuesto(@PathVariable("id") int id, @ModelAttribute("updaterequisitocompuesto") RequisitoCompuesto requisitoActual){
         requisitoActual.setId(id);
-       Proyecto proyecto= repoProyecto.encontrarProyectoId(requisitoActual.getProyecto().getId());
-       requisitoActual.setProyecto(proyecto);
+        Proyecto proyecto= repoProyecto.encontrarProyectoId(requisitoActual.getProyecto().getId());
+        requisitoActual.setProyecto(proyecto);
         EstadoRequisito estado = RequisitoAbierto.getEstado();
-        
-        requisitoActual.setEstado(estado);
-  
         requisitoActual.setEstado(estado);
         repositorio.actualizarRequisitoCompuesto(requisitoActual);
         return "redirect:/RequisitoCompuesto";
@@ -83,26 +79,18 @@ public class ControladorRequisitoCompuesto {
     public String NuevoRequisitoSimpleACompuesto(@PathVariable("id") int id, Model model){
         RequisitoCompuesto requisito = repositorio.encontrarRequisitoCompuestoPorId(id);
         model.addAttribute("requisitoCompuesto", requisito);
-       Requisito requisitoNuevo=new Requisito();
-        
+        Requisito requisitoNuevo=new Requisito();
         model.addAttribute("requisito", requisitoNuevo); 
         return "requisitoCompuestoAgregarSimple";
-        
     }
     
      @RequestMapping(value="/RequisitoCompuesto/AgregarNuevoSimple/{id}",method = RequestMethod.POST)
     public String ActualizarRequisitoCompuestoNuevoSimple(@PathVariable("id") int id, @ModelAttribute("requisitoCompuesto") RequisitoCompuesto requisitoCompuesto ,@ModelAttribute("requisito") Requisito requisito){
         requisitoCompuesto.setId(id);
-        
-        requisito.setEstado(RequisitoAbierto.getEstado());
-        
-        
+        requisito.setEstado(RequisitoAbierto.getEstado());     
         requisitoCompuesto.getRequisitosSimple().add(requisito);
-        
-       requisito.getCompuesto().add(requisitoCompuesto);
-        //repositorio.actualizarRequisitoCompuesto(requisitoCompuesto);
+        requisito.getCompuesto().add(requisitoCompuesto);
         repositorio.actualizarRequisitoCompuestoNuevoRequisito(requisitoCompuesto);
         return "redirect:/RequisitoCompuesto";
-    } 
-    
+    }   
 }

@@ -1,5 +1,4 @@
 package com.durgam.guerra.repositorio.impl;
-
 import com.durgam.guerra.modelo.Stakeholder;
 import com.durgam.guerra.repositorio.RepositorioStakeholder;
 import java.util.List;
@@ -56,15 +55,13 @@ private SessionFactory sessionFactory;
     public void actualizarStakeholder(Stakeholder stakeholderActual) {
         Session session = getSessionFactory().getCurrentSession();
         int id = stakeholderActual.getId();
-         Stakeholder stakeholder=(Stakeholder)session.get(Stakeholder.class, id, new LockOptions(LockMode.OPTIMISTIC));
-       stakeholder.setVersion(stakeholder.getVersion()-1);
-       stakeholder.setId(stakeholderActual.getId());
-       stakeholder.setApellido(stakeholderActual.getApellido());
-       stakeholder.setNombre(stakeholderActual.getNombre());
-       stakeholder.setDni(stakeholderActual.getDni());
-       stakeholder.setRol(stakeholderActual.getRol());
-      stakeholder.setRequisitos(stakeholderActual.getRequisitos());
-      
-       // session.saveOrUpdate(stakeholderActual);
+        Stakeholder stakeholder=(Stakeholder)session.get(Stakeholder.class, id, new LockOptions(LockMode.OPTIMISTIC));
+        stakeholder.setVersion(stakeholder.getVersion()-1);
+        stakeholder.setId(stakeholderActual.getId());
+        stakeholder.setApellido(stakeholderActual.getApellido());
+        stakeholder.setNombre(stakeholderActual.getNombre());
+        stakeholder.setDni(stakeholderActual.getDni());
+        stakeholder.setRol(stakeholderActual.getRol());
+        stakeholder.setRequisitos(stakeholderActual.getRequisitos());
     }
 }

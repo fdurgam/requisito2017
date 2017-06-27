@@ -7,8 +7,6 @@ import com.durgam.guerra.modelo.RequisitoAbierto;
 import com.durgam.guerra.modelo.RequisitoCompuesto;
 import com.durgam.guerra.modelo.RequisitoSimple;
 import com.durgam.guerra.modelo.Stakeholder;
-
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -37,8 +35,8 @@ public class ControladorGestionRequisito {
     }
     
     @RequestMapping(value="/Gestion/nuevo",method = RequestMethod.POST)
-    public String guardaGestionrequisito(@ModelAttribute("gestion") Gestionrequisito gestionnuevo){
-        servicio.nuevoGestionRequisito(gestionnuevo);
+    public String guardaGestionrequisito(@ModelAttribute("gestion") Gestionrequisito gestionNuevo){
+        servicio.nuevoGestionRequisito(gestionNuevo);
         return "redirect:/Gestion";
     }
     
@@ -50,8 +48,8 @@ public class ControladorGestionRequisito {
     }
 
     @RequestMapping(value="/Gestion/update/{id}",method = RequestMethod.POST)
-    public String ActualizarGestionrequisito(@PathVariable("id") int id, @ModelAttribute("updateGestion") Gestionrequisito gestionactual){
-        servicio.actualizarGestionrequisito(gestionactual);
+    public String ActualizarGestionrequisito(@PathVariable("id") int id, @ModelAttribute("updateGestion") Gestionrequisito gestionActual){
+        servicio.actualizarGestionrequisito(gestionActual);
         return "redirect:/Gestion";
     }
    

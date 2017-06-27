@@ -6,7 +6,6 @@ import com.durgam.guerra.modelo.Proyecto;
 import com.durgam.guerra.modelo.Requisito;
 import com.durgam.guerra.modelo.RequisitoAbierto;
 import com.durgam.guerra.modelo.RequisitoSimple;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -39,7 +38,7 @@ public class ControladorRequisitoSimple {
     
     @RequestMapping(value="/RequisitoSimple/nuevo",method = RequestMethod.POST)
     public String guardaProyecto(@ModelAttribute("requisito")RequisitoSimple requisito){
-       EstadoRequisito estado = RequisitoAbierto.getEstado();
+        EstadoRequisito estado = RequisitoAbierto.getEstado();
         requisito.setEstado(estado);
         repositorio.nuevoRequisitoSimple(requisito);
         return "redirect:/RequisitoSimple";
@@ -62,13 +61,10 @@ public class ControladorRequisitoSimple {
     
     @RequestMapping(value="/RequisitoSimple/update/{id}",method = RequestMethod.POST)
     public String ActualizarRequisito(@PathVariable("id") int id, @ModelAttribute("updaterequisitosimple") RequisitoSimple requisitoActual){
-        requisitoActual.setId(id);
-        Proyecto proyecto= repoProyecto.encontrarProyectoId(requisitoActual.getProyecto().getId());
+       requisitoActual.setId(id);
+       Proyecto proyecto= repoProyecto.encontrarProyectoId(requisitoActual.getProyecto().getId());
        requisitoActual.setProyecto(proyecto);
-       // EstadoRequisito estado = RequisitoAbierto.getEstado();
-        
-        //requisitoActual.setEstado(estado);
-        repositorio.actualizarRequisitoSimple(requisitoActual);
-        return "redirect:/RequisitoSimple";
+       repositorio.actualizarRequisitoSimple(requisitoActual);
+       return "redirect:/RequisitoSimple";
     }
 }

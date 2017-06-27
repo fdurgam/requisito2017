@@ -36,15 +36,14 @@ public class RepositorioProyectoImp implements RepositorioProyecto {
     @Transactional  
     @Override
     public Proyecto encontrarProyectoPorId(int id) {
-        Session session = getSessionFactory().getCurrentSession();  
-        Query query = session.createQuery("FROM Proyecto where id="+Integer.toString(id));
-        Proyecto documento= (Proyecto)query.uniqueResult();
-        return documento;
+      Session session = getSessionFactory().getCurrentSession();  
+      Query query = session.createQuery("FROM Proyecto where id="+Integer.toString(id));
+      Proyecto documento= (Proyecto)query.uniqueResult();
+      return documento;
     }
     
     @Transactional  
     @Override
-    
     public void eliminarProyecto(Proyecto documento) {
        Session session = getSessionFactory().getCurrentSession();
        session.delete(documento); 
@@ -70,17 +69,14 @@ public class RepositorioProyectoImp implements RepositorioProyecto {
     @Override
     public void actualizarProyecto(Proyecto proyectoActual) {
         Session session = getSessionFactory().getCurrentSession();
-         int id = proyectoActual.getId();
-         Proyecto proyecto=(Proyecto)session.get(Proyecto.class, id, new LockOptions(LockMode.OPTIMISTIC));
-       
+        int id = proyectoActual.getId();
+        Proyecto proyecto=(Proyecto)session.get(Proyecto.class, id, new LockOptions(LockMode.OPTIMISTIC));  
         proyecto.setVersion(proyecto.getVersion()-1);
         proyecto.setId(proyectoActual.getId());
-        
-        
         proyecto.setNombreProyecto(proyectoActual.getNombreProyecto());
         proyecto.setDescripcionProyecto(proyectoActual.getDescripcionProyecto());
         proyecto.setAplicacion(proyectoActual.getAplicacion());
         proyecto.setRequisitos(proyectoActual.getRequisitos());
-         //session.saveOrUpdate(proyectoActual);
+     
     }
 }

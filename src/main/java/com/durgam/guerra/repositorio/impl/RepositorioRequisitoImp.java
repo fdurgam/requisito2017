@@ -1,5 +1,4 @@
 package com.durgam.guerra.repositorio.impl;
-import com.durgam.guerra.modelo.Proyecto;
 import com.durgam.guerra.modelo.Requisito;
 import com.durgam.guerra.repositorio.RepositorioRequisito;
 import java.util.List;
@@ -61,10 +60,8 @@ private SessionFactory sessionFactory;
     @Override
     public void actualizarRequisito(Requisito requisitoActual) {
         Session session = getSessionFactory().getCurrentSession();
-        
          int id = requisitoActual.getId();
-         Requisito requisito=(Requisito)session.get(Requisito.class, id, new LockOptions(LockMode.OPTIMISTIC));
-       
+         Requisito requisito=(Requisito)session.get(Requisito.class, id, new LockOptions(LockMode.OPTIMISTIC));   
         requisito.setVersion(requisito.getVersion()-1);
         requisito.setId(requisitoActual.getId());
         requisito.setNecesidad(requisitoActual.getNecesidad());
@@ -74,14 +71,9 @@ private SessionFactory sessionFactory;
         requisito.setRiesgo(requisitoActual.getRiesgo());
         requisito.setStakeholders(requisitoActual.getStakeholders());
         requisito.setCompuesto(requisitoActual.getCompuesto());
-      
-        
-        
-        
-        
-       // session.saveOrUpdate(requisitoactual);
     }
-@Transactional
+   
+    @Transactional
     @Override
     public void actualizarEstadoRequisito(Requisito requisitoActual) {
         Session session = getSessionFactory().getCurrentSession();

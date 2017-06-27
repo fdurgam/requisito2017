@@ -1,7 +1,6 @@
 package com.durgam.guerra.controlador;
 import com.durgam.guerra.repositorio.RepositorioStakeholder;
 import com.durgam.guerra.modelo.Stakeholder;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -18,7 +17,6 @@ public class ControladorStakeholder {
     @RequestMapping("/Stakeholder")
     public String mostrarStakeholder(Model model){
         model.addAttribute("datos",repositorio.obtenerTodosStakeholder());
-        model.addAttribute("cantidad",1);
         return "stakeholder"; 
     }
     
@@ -41,8 +39,7 @@ public class ControladorStakeholder {
         model.addAttribute("updatestakeholder", stakeholder);   
         return "stakeholderUpdate";
     }
-    
-    
+      
     @RequestMapping(value="/Stakeholder/update/{id}",method = RequestMethod.POST)
     public String ActualizaStakeholder(@PathVariable("id") int id, @ModelAttribute("updatestakeholder") Stakeholder stakeholderActual){
         repositorio.actualizarStakeholder(stakeholderActual);
